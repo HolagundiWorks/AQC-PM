@@ -8,6 +8,9 @@
     <AssemblyName>AQC-PM</AssemblyName>
     <Product>AQC Project Management</Product>
     <Version>0.1.0</Version>
+    <!-- S9: distinct installer identity — do not share with Estimation / BBS -->
+    <ApplicationId>in.aorms.aqc.pm</ApplicationId>
+    <ApplicationTitle>AQC Project Management</ApplicationTitle>
   </PropertyGroup>
   <ItemGroup>
     <!-- Pin HolagundiWorks/AQC Aorms.Bridge via submodule path when present -->
