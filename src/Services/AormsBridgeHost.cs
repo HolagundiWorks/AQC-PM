@@ -9,13 +9,14 @@ public static class AormsBridgeHost
 {
     public static AormsBridge CreateFromEnvironment()
     {
+        var deviceId = Environment.GetEnvironmentVariable("INSTALL_ID")
+            ?? $"aqc-pm-{Environment.MachineName}".ToLowerInvariant();
         var opt = new BridgeOptions
         {
             LicenseApiUrl = Environment.GetEnvironmentVariable("ESTI_LICENSE_API_URL") ?? "",
             HubUrl = Environment.GetEnvironmentVariable("ESTI_HUB_URL") ?? "http://127.0.0.1:4000",
             ProductApiKey = Environment.GetEnvironmentVariable("ESTI_PRODUCT_API_KEY") ?? "",
-            DeviceId = Environment.GetEnvironmentVariable("INSTALL_ID")
-                ?? $"aqc-pm-{Environment.MachineName}".ToLowerInvariant(),
+            DeviceId = deviceId,
             DeviceName = "AQC Project Management",
         };
         var dbPath = Path.Combine(
@@ -23,6 +24,8 @@ public static class AormsBridgeHost
             "AQC-PM",
             "firm.db");
         Directory.CreateDirectory(Path.GetDirectoryName(dbPath)!);
-        return new AormsBridge(opt, dbPath);
+        var bridge = new AormsBridge(opt, dbPath);
+        bridge.TryImportConnectSession(overwrite: true);
+        return bridge;
     }
 }
