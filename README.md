@@ -14,16 +14,17 @@ Part of the **AORMS** product suite ([aorms.in](https://aorms.in)).
 
 ## Status
 
-**S9:** Unpackaged WinUI shell + hub Activate/Flush. Domain UI and MSIX packaging next. Do **not** fork a divergent calc engine — pin AQC tags.
+**S9:** Unpackaged WinUI shell + hub Activate/Flush + `Package.appxmanifest` (`in.aorms.aqc.pm`). Domain UI next. Code signing = D6.
 
 ## Develop
 
 ```bat
 git submodule update --init --recursive
 build-winui.cmd
+build-msix.cmd
 ```
 
-Set `ESTI_HUB_URL` (default `http://127.0.0.1:4000`) for local hub sync smoke tests.
+Set `ESTI_HUB_URL` (default `http://127.0.0.1:4000`) for local hub sync smoke tests. Unsigned MSIX → `artifacts\msix\`.
 
 ## Suite map
 
