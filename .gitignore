@@ -1,5 +1,4 @@
-﻿bin/
-obj/
-vendor/
-*.user
+**/bin/
+**/obj/
 .vs/
+*.user
